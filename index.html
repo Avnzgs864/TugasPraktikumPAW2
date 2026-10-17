@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ITERA Student Hub — Dashboard Mahasiswa</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+</head>
+<body>
+
+    <aside class="sidebar">
+        <div class="sidebar-logo">
+            <span class="sidebar-logo-icon">🎓</span>
+            <div>
+                <h1 class="sidebar-title">Student Hub</h1>
+                <p class="sidebar-sub">ITERA Dashboard</p>
+            </div>
+        </div>
+
+        <nav class="sidebar-nav">
+            <button class="nav-item active" data-section="beranda">
+                <i data-lucide="layout-dashboard"></i>
+                <span>Beranda</span>
+            </button>
+            <button class="nav-item" data-section="jadwal">
+                <i data-lucide="calendar-days"></i>
+                <span>Jadwal Kuliah</span>
+            </button>
+            <button class="nav-item" data-section="tugas">
+                <i data-lucide="list-checks"></i>
+                <span>Daftar Tugas</span>
+            </button>
+            <button class="nav-item" data-section="catatan">
+                <i data-lucide="notebook-pen"></i>
+                <span>Catatan</span>
+            </button>
+            <button class="nav-item" data-section="pomodoro">
+                <i data-lucide="timer"></i>
+                <span>Pomodoro</span>
+            </button>
+            <button class="nav-item" data-section="ipk">
+                <i data-lucide="graduation-cap"></i>
+                <span>Hitung IPK</span>
+            </button>
+        </nav>
+
+        <div class="sidebar-footer">
+            <button id="btn-dark-mode" class="dark-mode-toggle">
+                <i data-lucide="moon"></i>
+                <span>Mode Gelap</span>
+            </button>
+        </div>
+    </aside>
+
+    <div class="main-wrapper">
+
+        <header class="topbar">
+            <button id="btn-hamburger" class="hamburger">
+                <i data-lucide="menu"></i>
+            </button>
+            <div class="topbar-greeting">
+                <h2 id="greeting-text">Selamat Datang! 👋</h2>
+                <p id="greeting-date" class="greeting-date">Memuat tanggal...</p>
+            </div>
+            <div class="topbar-right">
+                <div id="quote-mini" class="quote-mini">
+                    <span id="quote-text-mini">Memuat kutipan...</span>
+                </div>
+                <div class="clock-pill">
+                    <i data-lucide="clock" class="clock-icon"></i>
+                    <span id="clock-display">--:--</span>
+                </div>
+            </div>
+        </header>
+
+        <main class="content">
+
+            <section id="sec-beranda" class="section active">
+                <div class="stats-row">
+                    <div class="stat-card stat-gradient-1">
+                        <div class="stat-icon"><i data-lucide="calendar-days"></i></div>
+                        <div class="stat-info">
+                            <span class="stat-number" id="stat-jadwal">0</span>
+                            <span class="stat-label">Jadwal Kuliah</span>
+                        </div>
+                    </div>
+                    <div class="stat-card stat-gradient-2">
+                        <div class="stat-icon"><i data-lucide="list-checks"></i></div>
+                        <div class="stat-info">
+                            <span class="stat-number" id="stat-tugas">0</span>
+                            <span class="stat-label">Tugas Aktif</span>
+                        </div>
+                    </div>
+                    <div class="stat-card stat-gradient-3">
+                        <div class="stat-icon"><i data-lucide="check-circle-2"></i></div>
+                        <div class="stat-info">
+                            <span class="stat-number" id="stat-selesai">0</span>
+                            <span class="stat-label">Tugas Selesai</span>
+                        </div>
+                    </div>
+                    <div class="stat-card stat-gradient-4">
+                        <div class="stat-icon"><i data-lucide="notebook-pen"></i></div>
+                        <div class="stat-info">
+                            <span class="stat-number" id="stat-catatan">0</span>
+                            <span class="stat-label">Catatan</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="beranda-grid">
+                    <div class="card weather-card">
+                        <div class="card-header">
+                            <h3><i data-lucide="cloud-sun"></i> Cuaca Saat Ini — Lampung Selatan</h3>
+                            <button id="btn-refresh-weather" class="btn-icon-round" title="Perbarui cuaca">
+                                <i data-lucide="refresh-cw"></i>
+                            </button>
+                        </div>
+                        <div id="weather-content" class="weather-body">
+                            <div class="loader"></div>
+                            <p>Memuat data cuaca...</p>
+                        </div>
+                    </div>
+
+                    <div class="card quote-card">
+                        <div class="card-header">
+                            <h3><i data-lucide="quote"></i> Kutipan Motivasi Hari Ini</h3>
+                            <button id="btn-refresh-quote" class="btn-icon-round" title="Kutipan baru">
+                                <i data-lucide="refresh-cw"></i>
+                            </button>
+                        </div>
+                        <div class="quote-body">
+                            <p id="quote-text" class="quote-content">Memuat kutipan...</p>
+                            <span id="quote-author" class="quote-author"></span>
+                        </div>
+                    </div>
+
+                    <div class="card progress-card">
+                        <div class="card-header">
+                            <h3><i data-lucide="trending-up"></i> Progres Tugas</h3>
+                        </div>
+                        <div class="progress-body">
+                            <div class="progress-ring-wrapper">
+                                <svg class="progress-ring" viewBox="0 0 120 120">
+                                    <circle class="progress-ring-bg" cx="60" cy="60" r="52" />
+                                    <circle id="progress-ring-fill" class="progress-ring-fill" cx="60" cy="60" r="52" />
+                                </svg>
+                                <div class="progress-ring-text">
+                                    <span id="progress-percent" class="progress-number">0%</span>
+                                    <span class="progress-label">Selesai</span>
+                                </div>
+                            </div>
+                            <div class="progress-details">
+                                <div class="progress-detail-item">
+                                    <span class="dot dot-active"></span>
+                                    <span>Aktif: <strong id="prog-active">0</strong></span>
+                                </div>
+                                <div class="progress-detail-item">
+                                    <span class="dot dot-done"></span>
+                                    <span>Selesai: <strong id="prog-done">0</strong></span>
+                                </div>
+                                <div class="progress-detail-item">
+                                    <span class="dot dot-total"></span>
+                                    <span>Total: <strong id="prog-total">0</strong></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card jadwal-hari-ini-card">
+                        <div class="card-header">
+                            <h3><i data-lucide="calendar-clock"></i> Jadwal Hari Ini</h3>
+                        </div>
+                        <div id="jadwal-hari-ini" class="mini-list">
+                            <p class="empty-state-sm">Tidak ada jadwal hari ini 🎉</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="sec-jadwal" class="section">
+                <div class="section-header">
+                    <h2 class="section-title">📅 Jadwal Kuliah</h2>
+                    <button id="btn-add-schedule" class="btn-primary">
+                        <i data-lucide="plus"></i> Tambah Jadwal
+                    </button>
+                </div>
+                <div class="day-tabs">
+                    <button class="day-tab active" data-day="Senin">Senin</button>
+                    <button class="day-tab" data-day="Selasa">Selasa</button>
+                    <button class="day-tab" data-day="Rabu">Rabu</button>
+                    <button class="day-tab" data-day="Kamis">Kamis</button>
+                    <button class="day-tab" data-day="Jumat">Jumat</button>
+                    <button class="day-tab" data-day="Sabtu">Sabtu</button>
+                </div>
+                <div id="schedule-list" class="item-list">
+                    <div class="empty-state">
+                        <i data-lucide="calendar-x" class="empty-icon"></i>
+                        <p>Belum ada jadwal untuk hari ini</p>
+                        <span>Klik tombol "Tambah Jadwal" untuk menambahkan</span>
+                    </div>
+                </div>
+            </section>
+
+            <section id="sec-tugas" class="section">
+                <div class="section-header">
+                    <h2 class="section-title">✅ Daftar Tugas</h2>
+                    <button id="btn-add-task" class="btn-primary">
+                        <i data-lucide="plus"></i> Tambah Tugas
+                    </button>
+                </div>
+                <div class="task-toolbar">
+                    <div class="filter-tabs">
+                        <button class="filter-btn active" data-filter="all">Semua</button>
+                        <button class="filter-btn" data-filter="active">Belum Selesai</button>
+                        <button class="filter-btn" data-filter="done">Sudah Selesai</button>
+                    </div>
+                    <button id="btn-clear-done" class="btn-danger-sm">
+                        <i data-lucide="trash-2"></i> Hapus Selesai
+                    </button>
+                </div>
+                <div id="task-list" class="item-list">
+                    <div class="empty-state">
+                        <i data-lucide="clipboard-list" class="empty-icon"></i>
+                        <p>Belum ada tugas</p>
+                        <span>Klik tombol "Tambah Tugas" untuk menambahkan</span>
+                    </div>
+                </div>
+            </section>
+
+            <section id="sec-catatan" class="section">
+                <div class="section-header">
+                    <h2 class="section-title">📝 Catatan</h2>
+                    <button id="btn-add-note" class="btn-primary">
+                        <i data-lucide="plus"></i> Tambah Catatan
+                    </button>
+                </div>
+                <div id="notes-list" class="notes-grid">
+                    <div class="empty-state">
+                        <i data-lucide="file-text" class="empty-icon"></i>
+                        <p>Belum ada catatan</p>
+                        <span>Klik tombol "Tambah Catatan" untuk menambahkan</span>
+                    </div>
+                </div>
+            </section>
+
+            <section id="sec-pomodoro" class="section">
+                <div class="section-header">
+                    <h2 class="section-title">🍅 Pomodoro Timer</h2>
+                </div>
+                <div class="pomodoro-wrapper">
+                    <div class="pomodoro-card">
+                        <div class="pomo-mode-tabs">
+                            <button class="pomo-tab active" data-pomo="focus">Fokus</button>
+                            <button class="pomo-tab" data-pomo="short">Istirahat Pendek</button>
+                            <button class="pomo-tab" data-pomo="long">Istirahat Panjang</button>
+                        </div>
+                        <div class="pomo-display">
+                            <svg class="pomo-ring" viewBox="0 0 200 200">
+                                <circle class="pomo-ring-bg" cx="100" cy="100" r="90" />
+                                <circle id="pomo-ring-fill" class="pomo-ring-fill" cx="100" cy="100" r="90" />
+                            </svg>
+                            <div class="pomo-time-text">
+                                <span id="pomo-minutes">25</span>:<span id="pomo-seconds">00</span>
+                            </div>
+                        </div>
+                        <div class="pomo-controls">
+                            <button id="btn-pomo-start" class="btn-pomo btn-pomo-start">
+                                <i data-lucide="play"></i> Mulai
+                            </button>
+                            <button id="btn-pomo-pause" class="btn-pomo btn-pomo-pause hidden">
+                                <i data-lucide="pause"></i> Jeda
+                            </button>
+                            <button id="btn-pomo-reset" class="btn-pomo btn-pomo-reset">
+                                <i data-lucide="rotate-ccw"></i> Atur Ulang
+                            </button>
+                        </div>
+                        <div class="pomo-session-info">
+                            <span>Sesi hari ini: <strong id="pomo-session-count">0</strong></span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="sec-ipk" class="section">
+                <div class="section-header">
+                    <h2 class="section-title">🎓 Kalkulator IPK</h2>
+                    <button id="btn-add-matkul" class="btn-primary">
+                        <i data-lucide="plus"></i> Tambah Mata Kuliah
+                    </button>
+                </div>
+                <div class="ipk-wrapper">
+                    <div class="ipk-result-card">
+                        <div class="ipk-big-number">
+                            <span id="ipk-value">0.00</span>
+                        </div>
+                        <p class="ipk-label">Indeks Prestasi Kumulatif</p>
+                        <div class="ipk-detail-row">
+                            <span>Total SKS: <strong id="ipk-total-sks">0</strong></span>
+                            <span>Mata Kuliah: <strong id="ipk-total-mk">0</strong></span>
+                        </div>
+                    </div>
+                    <div id="ipk-list" class="ipk-table-wrapper">
+                        <div class="empty-state">
+                            <i data-lucide="book-open" class="empty-icon"></i>
+                            <p>Belum ada mata kuliah</p>
+                            <span>Klik "Tambah Mata Kuliah" untuk mulai menghitung IPK</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+        </main>
+    </div>
+
+    <div id="modal-overlay" class="modal-overlay hidden">
+        <div class="modal">
+            <div class="modal-header">
+                <h3 id="modal-title">Formulir</h3>
+                <button id="btn-close-modal" class="btn-icon-round">
+                    <i data-lucide="x"></i>
+                </button>
+            </div>
+            <form id="modal-form" class="modal-body"></form>
+            <div class="modal-footer">
+                <button type="button" id="btn-cancel-modal" class="btn-secondary">Batal</button>
+                <button type="button" id="btn-save-modal" class="btn-primary">Simpan</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="toast-container" class="toast-container"></div>
+
+    <script src="app.js"></script>
+</body>
+</html>
