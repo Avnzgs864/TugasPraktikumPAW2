@@ -1,10 +1,10 @@
-# 🎓 ITERA Student Hub — Personal Dashboard
+#  ITERA Student Hub — Personal Dashboard
 
 > Aplikasi Personal Dashboard berbasis web untuk mahasiswa ITERA yang membantu mengelola jadwal kuliah, daftar tugas, dan catatan penting dalam satu tampilan yang interaktif dan modern.
 
 ---
 
-## 📋 Deskripsi Aplikasi
+## Deskripsi Aplikasi
 
 **ITERA Student Hub** adalah aplikasi dashboard pribadi yang dirancang khusus untuk membantu produktivitas dan organisasi sehari-hari mahasiswa. Aplikasi ini berjalan sepenuhnya di browser (client-side) tanpa memerlukan server backend, dan seluruh data tersimpan secara lokal di perangkat pengguna menggunakan `localStorage`.
 
@@ -12,16 +12,20 @@ Aplikasi ini terdiri dari **satu halaman** (`index.html`) dengan desain responsi
 
 ---
 
-## ✨ Fitur-Fitur Utama
+## Dokumentasi Screenshot
+<img width="1917" height="893" alt="Screenshot 2026-10-17 232824" src="https://github.com/user-attachments/assets/bcf1b156-39fc-4bb9-a894-5c7c72731b3c" />
 
-### 1. 📅 Jadwal Kuliah
+
+## Fitur-Fitur Utama
+
+### 1. Jadwal Kuliah
 - **Tambah** jadwal mata kuliah lengkap dengan hari, jam, dan ruang kelas
 - **Edit** jadwal yang sudah ada
 - **Hapus** jadwal yang tidak dibutuhkan lagi
 - **Filter berdasarkan hari** (Senin–Sabtu) menggunakan tab navigasi
 - Jadwal otomatis terurut berdasarkan waktu
 
-### 2. ✅ Daftar Tugas (To-Do List)
+### 2. Daftar Tugas (To-Do List)
 - **Tambah** tugas baru dengan judul, deskripsi, prioritas, dan deadline
 - **Edit** dan **hapus** tugas
 - **Tandai selesai/belum selesai** dengan satu klik pada checkbox
@@ -30,34 +34,34 @@ Aplikasi ini terdiri dari **satu halaman** (`index.html`) dengan desain responsi
 - **Statistik tugas** ditampilkan di bawah daftar (total, selesai, aktif)
 - Saat pertama kali dibuka, 5 tugas contoh otomatis di-load dari API JSONPlaceholder
 
-### 3. 📝 Catatan Cepat
+### 3. Catatan Cepat
 - **Tambah** catatan dengan judul dan isi
 - **Edit** dan **hapus** catatan
 - Ditampilkan dalam format **grid kartu** dengan warna bergantian (kuning, biru, hijau)
 - Tanggal pembuatan ditampilkan di setiap kartu
 
-### 4. 🌤️ Widget Cuaca Real-time
+### 4. Widget Cuaca Real-time
 - Menampilkan **suhu**, **kondisi cuaca**, **kecepatan angin**, dan **kelembapan** secara real-time
 - Data diambil dari **Open-Meteo API** (koordinat: ITERA Lampung Selatan)
 - Tombol refresh untuk memperbarui data cuaca
 - Deskripsi cuaca dalam Bahasa Indonesia
 
-### 5. 💬 Kutipan Motivasi
+### 5. Kutipan Motivasi
 - Menampilkan kutipan inspirasi acak di header dashboard
 - Data diambil dari **DummyJSON Quotes API**
 - Otomatis berubah setiap kali halaman di-refresh
 
-### 6. 🕐 Jam & Tanggal Digital
+### 6. Jam & Tanggal Digital
 - Menampilkan jam real-time (update setiap detik)
 - Tanggal lengkap dalam format Bahasa Indonesia
 
-### 7. 🔔 Notifikasi Toast
+### 7. Notifikasi Toast
 - Notifikasi pop-up muncul saat data berhasil ditambah, diubah, atau dihapus
 - Warna berbeda untuk tipe notifikasi: sukses (hijau), error (merah), info (biru)
 
 ---
 
-## 🛠️ Teknologi yang Digunakan
+##  Teknologi yang Digunakan
 
 | Teknologi | Keterangan |
 |-----------|-----------|
@@ -73,7 +77,7 @@ Aplikasi ini terdiri dari **satu halaman** (`index.html`) dengan desain responsi
 
 ---
 
-## 📂 Struktur File
+##  Struktur File
 
 ```
 tugas-praktikum/
@@ -86,7 +90,7 @@ tugas-praktikum/
 
 ---
 
-## 🚀 Cara Menjalankan
+##  Cara Menjalankan
 
 1. **Download** atau clone seluruh folder proyek
 2. **Buka** file `index.html` di browser modern (Chrome, Firefox, Edge)
@@ -166,7 +170,7 @@ Berikut daftar lengkap fitur-fitur JavaScript ES6+ yang digunakan beserta lokasi
 
 ---
 
-## 📱 Desain UI/UX
+##  Desain UI/UX
 
 - **Responsif**: Layout otomatis menyesuaikan di desktop (grid multi-kolom) dan mobile (1 kolom)
 - **Warna konsisten**: Menggunakan CSS Custom Properties untuk tema warna yang seragam
@@ -176,7 +180,7 @@ Berikut daftar lengkap fitur-fitur JavaScript ES6+ yang digunakan beserta lokasi
 
 ---
 
-## 📌 API Publik yang Digunakan
+##  API Publik yang Digunakan
 
 | API | Endpoint | Kegunaan |
 |-----|----------|----------|
@@ -188,27 +192,7 @@ Berikut daftar lengkap fitur-fitur JavaScript ES6+ yang digunakan beserta lokasi
 
 ---
 
-## 🐍 Bonus: Program Segitiga Python (`segitiga.py`)
-
-Program Python terpisah yang mencetak pola segitiga simetris menggunakan karakter `#`.
-
-**Cara menjalankan:**
-```bash
-python segitiga.py
-```
-
-**Contoh output (tinggi = 5):**
-```
-    #
-   ###
-  #####
- #######
-#########
-```
-
----
-
-## 👤 Informasi
+## Informasi
 
 - **Mata Kuliah:** Praktikum Pemrograman Web
 - **Kampus:** Institut Teknologi Sumatera (ITERA)
